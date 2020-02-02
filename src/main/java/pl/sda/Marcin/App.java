@@ -11,8 +11,14 @@ public class App {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Podaj znak zodiaku. Po polsku, małymi literami");
         String userInput = scanner.next();
-        String
-        System.out.println(getPage(userInput));
+        String requestResult = Connector.getPage(userInput);
+        String horoscopeMessage = "";
+        if (!requestResult.equals(Connector.NOT_FOUND)){
+            horoscopeMessage = HoroscopeExcratcor.getHoroscopeText(requestResult);
+
+        }
+        System.out.println(horoscopeMessage);
+
     }
 
     public String getHoroscopeText(String pageAsText){
